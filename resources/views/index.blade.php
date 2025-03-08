@@ -1,6 +1,6 @@
 <x-app-layout>
     <!-- loader -->
-    <div class="fixed inset-0 bg-white z-50" id="loader_bg">
+    <div class="fixed inset-0 bg-background z-50" id="loader_bg">
         <div class="flex items-center justify-center h-screen">
             <img src="images/loading.gif" alt="Loading..." class="w-16 h-16"/>
         </div>
@@ -38,12 +38,12 @@
 
         <div class="relative">
             <!-- header -->
-            <header class="bg-brown shadow-md">
-                <div class="container mx-auto px-4">
-                    <div class="flex items-center justify-between py-4">
-                        <div class="w-1/4">
-                            <a href="index.html" class="block">
-                                <img src="images/logo.png" alt="Logo" class="h-12"/>
+            <header class="bg-brown shadow-md h-20">
+                <div class="container mx-auto px-4 h-full">
+                    <div class="flex items-center justify-between h-full">
+                        <div class="w-1/4 h-full">
+                            <a href="index.html" class="block h-full">
+                                <img src="images/logo.png" alt="Logo" class="h-full bg-white"/>
                             </a>
                         </div>
                         <div class="w-3/4">
@@ -51,20 +51,20 @@
                                 <div class="hidden lg:flex items-center space-x-4">
                                     <div class="flex items-center">
                                         <img src="images/phone_icon.png" alt="phone" class="w-4 h-4 mr-2"/>
-                                        <a href="#" class="text-white hover:text-gray-800">987-654-3210</a>
+                                        <a href="tel:+14072575463" class="text-white hover:text-gray-800">+1 (407) 257-5463</a>
                                     </div>
                                     <div class="flex items-center">
                                         <img src="images/mail_icon.png" alt="email" class="w-4 h-4 mr-2"/>
-                                        <a href="#" class="text-white hover:text-gray-800">demo@gmail.com</a>
+                                        <a href="mailto:menu@sahzonconh.com" class="text-white hover:text-gray-800">menu@sahzonconh.com</a>
                                     </div>
                                     <div class="flex items-center">
                                         <img src="images/location_icon.png" alt="location" class="w-4 h-4 mr-2"/>
-                                        <a href="#" class="text-white hover:text-gray-800">104 New york, USA</a>
+                                        <a href="https://www.google.com/maps/place/The+Green+House/@28.450656,-81.349815,15z/data=!4m2!3m1!1s0x88dd84835d232003:0x99dabb6f181cec03" class="text-white hover:text-gray-800">104 New york, USA</a>
                                     </div>
                                 </div>
                                 <div class="hidden md:flex items-center  space-x-2">
-                                    <a href="#" class="px-6 py-2.5 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-sm font-medium rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200">Login</a>
-                                    <a href="#" class="px-6 py-2.5 bg-white text-indigo-600 text-sm font-medium rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 border border-transparent hover:border-indigo-100">Register</a>
+                                    <a href="#" class="px-6 py-2.5 bg-gradient-to-r from-green-500 to-green-600 text-white text-sm font-medium rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200">Login</a>
+                                    <a href="#" class="px-6 py-2.5 bg-white text-green-600 text-sm font-medium rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 border border-transparent hover:border-indigo-100">Register</a>
                                 </div>
                                 <button class="p-2">
                                     <img src="images/search_icon.png" alt="search" class="w-5 h-5"/>
@@ -79,7 +79,7 @@
             </header>
 
             <!-- slider section -->
-            <div class="bg-gray-50 py-16">
+            <div class="bg-background py-16">
                 <div class="container mx-auto px-4">
                     <div class="max-w-7xl mx-auto">
                         <div id="main_slider" class="relative h-[600px]">
@@ -87,9 +87,9 @@
                                 <div class="carousel-item active h-full">
                                     <div class="grid md:grid-cols-2 gap-8 items-center h-full">
                                         <div class="space-y-6">
-                                            <h3 class="text-4xl font-bold text-gray-800">Discover Restaurants<br>That deliver near You</h3>
-                                            <p class="text-gray-600">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                                            <a href="#" class="inline-block px-8 py-3 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition-colors">Order Now</a>
+                                            <h3 class="text-4xl font-bold text-white">Discover Restaurants<br>That deliver near You</h3>
+                                            <p class="text-gray-300">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                                            <a href="#" class="uppercase inline-block px-8 py-3 border-2 border-green-600 text-green-600 rounded-lg hover:bg-green-600 hover:text-white transition-colors">Order Now</a>
                                         </div>
                                         <div class="text-center">
                                             <img src="images/burger_slide.png" alt="Burger" class="max-w-full mx-auto"/>
@@ -99,9 +99,9 @@
                                 <div class="carousel-item h-full">
                                     <div class="grid md:grid-cols-2 gap-8 items-center h-full">
                                         <div class="space-y-6">
-                                            <h3 class="text-4xl font-bold text-gray-800">Second Slide Restaurants<br>That deliver near You</h3>
-                                            <p class="text-gray-600">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                                            <a href="#" class="inline-block px-8 py-3 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition-colors">Order Now</a>
+                                            <h3 class="text-4xl font-bold text-white">Second Slide Restaurants<br>That deliver near You</h3>
+                                            <p class="text-gray-300">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                                            <a href="#" class="uppercase inline-block px-8 py-3 border-2 border-green-600 text-green-600 rounded-lg hover:bg-green-600 hover:text-white transition-colors">Order Now</a>
                                         </div>
                                         <div class="text-center">
                                             <img src="images/about-img.jpg" alt="Burger" class="max-w-full mx-auto"/>
@@ -110,10 +110,10 @@
                                 </div>
                             </div>
                             <div class="absolute bottom-4 left-0 right-0 flex justify-center gap-4">
-                                <button class="p-2 bg-white rounded-full shadow-lg hover:bg-gray-100" data-slide="prev">
+                                <button title="Previous" class="p-2 h-10 w-10 bg-white rounded-full shadow-lg hover:bg-gray-100" data-slide="prev">
                                     <i class="fa fa-angle-left"></i>
                                 </button>
-                                <button class="p-2 bg-white rounded-full shadow-lg hover:bg-gray-100" data-slide="next">
+                                <button title="Next" class="p-2 h-10 w-10 bg-white rounded-full shadow-lg hover:bg-gray-100" data-slide="next">
                                     <i class="fa fa-angle-right"></i>
                                 </button>
                             </div>
@@ -123,9 +123,12 @@
             </div>
 
             <!-- section -->
-            <section class="py-16 bg-brown">
+            <section class="py-16 bg-background relative">
+                <div class="absolute inset-0 -top-10 h-full">
+                    <img src="images/helper3.jpg" alt="Background" class="w-full h-[120%]"/>
+                </div>
                 <div class="container mx-auto px-4">
-                    <div class="text-center mb-12">
+                    <div class="text-center relative mb-12">
                         <h2 class="text-4xl font-bold text-white">Our Recipes</h2>
                     </div>
 
@@ -137,7 +140,7 @@
                                     <img src="images/rs1.png" alt="Homemade" class="h-full mx-auto object-cover"/>
                                 </div>
                                 <div class="p-4">
-                                    <h3 class="text-xl font-semibold text-gray-800">Homemade</h3>
+                                    <h3 class="text-xl font-motter font-semibold text-gray-800">Homemade</h3>
                                     <h4 class="mt-2"><span class="text-blue-600">$</span>10</h4>
                                 </div>
                             </div>
@@ -148,7 +151,7 @@
                                     <img src="images/rs2.png" alt="Noodles" class="h-full mx-auto object-cover"/>
                                 </div>
                                 <div class="p-4">
-                                    <h3 class="text-xl font-semibold text-gray-800">Noodles</h3>
+                                    <h3 class="text-xl font-motter  text-gray-800">Noodles</h3>
                                     <h4 class="mt-2"><span class="text-blue-600">$</span>20</h4>
                                 </div>
                             </div>
@@ -159,7 +162,7 @@
                                     <img src="images/rs3.png" alt="Egg" class="h-full mx-auto object-cover"/>
                                 </div>
                                 <div class="p-4">
-                                    <h3 class="text-xl font-semibold text-gray-800">Egg</h3>
+                                    <h3 class="text-xl font-motter  text-gray-800">Egg</h3>
                                     <h4 class="mt-2"><span class="text-blue-600">$</span>30</h4>
                                 </div>
                             </div>
@@ -170,7 +173,7 @@
                                     <img src="images/rs4.png" alt="Sushi Dizzy" class="h-full mx-auto object-cover"/>
                                 </div>
                                 <div class="p-4">
-                                    <h3 class="text-xl font-semibold text-gray-800">Sushi Dizzy</h3>
+                                    <h3 class="text-xl font-motter text-gray-800">Sushi Dizzy</h3>
                                     <h4 class="mt-2"><span class="text-blue-600">$</span>40</h4>
                                 </div>
                             </div>
@@ -181,7 +184,7 @@
                                     <img src="images/rs5.png" alt="The Coffee Break" class="h-full mx-auto object-cover"/>
                                 </div>
                                 <div class="p-4">
-                                    <h3 class="text-xl font-semibold text-gray-800">The Coffee Break</h3>
+                                    <h3 class="text-xl font-motter  text-gray-800">The Coffee Break</h3>
                                     <h4 class="mt-2"><span class="text-blue-600">$</span>50</h4>
                                 </div>
                             </div>
@@ -189,20 +192,20 @@
                     </div>
                 </div>
             </section>
-            <div class="bg-gray-50">
+            <div class="bg-background">
                 <!-- about -->
                 <div class="py-16">
                     <div class="container mx-auto px-4">
-                        <div class="text-center mb-12">
+                        <div class="text-center mb-12 relative">
                             <img src="images/title.png" alt="title" class="mx-auto mb-4"/>
-                            <h2 class="text-4xl font-bold text-gray-800">About Our Food & Restaurant</h2>
-                            <p class="mt-4 text-gray-600">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem</p>
+                            <h2 class="text-4xl font-bold text-white">About Our Food & Restaurant</h2>
+                            <p class="mt-4 text-gray-300">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem</p>
                         </div>
 
                         <div class="grid md:grid-cols-2 gap-12 items-center">
                             <div class="space-y-6">
-                                <h3 class="text-3xl font-bold text-gray-800">Best Food</h3>
-                                <p class="text-gray-600">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscureContrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard</p>
+                                <h3 class="text-3xl font-bold text-white">Best Food</h3>
+                                <p class="text-gray-300">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscureContrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard</p>
                                 <a href="#" class="inline-flex items-center text-blue-600 hover:text-blue-700">
                                     Read More
                                     <i class="fa fa-long-arrow-right ml-2"></i>
@@ -216,15 +219,18 @@
                 </div>
 
                 <!-- blog -->
-                <div class="py-16">
+                <div class="py-16 relative">
+                    <div class="absolute inset-0 -top-10 h-full">
+                        <img src="images/helper3.jpg" alt="Background" class="w-full h-[120%]"/>
+                    </div>
                     <div class="container mx-auto px-4">
-                        <div class="text-center mb-12">
+                        <div class="text-center mb-12 relative">
                             <img src="images/title.png" alt="title" class="mx-auto mb-4"/>
-                            <h2 class="text-4xl font-bold text-gray-800">Our Blog</h2>
-                            <p class="mt-4 text-gray-600">when looking at its layout. The point of using Lorem</p>
+                            <h2 class="text-4xl font-bold text-white">Our Blog</h2>
+                            <p class="mt-4 text-gray-300">when looking at its layout. The point of using Lorem</p>
                         </div>
 
-                        <div class="grid md:grid-cols-3 gap-8">
+                        <div class="grid md:grid-cols-3 gap-8 relative">
                             <!-- Blog Item 1 -->
                             <div class="bg-white rounded-lg shadow-md overflow-hidden">
                                 <div class="relative">
@@ -265,8 +271,8 @@
                 </div>
 
                 <!-- Our Client -->
-                <div class="py-16 bg-brown">
-                    <div class="container mx-auto px-4">
+                <div class="py-16 bg-background">
+                    <div class="container mx-auto px-4 relative">
                         <div class="text-center mb-12">
                             <img src="images/title.png" alt="title" class="mx-auto mb-4"/>
                             <h2 class="text-4xl font-bold text-white">Our Client</h2>
@@ -284,32 +290,35 @@
                 </div>
 
                 <!-- Contact Form -->
-                <div class="bg-gray-50 text-gray-900 py-16">
-                    <div class="container mx-auto px-4">
-                        <h2 class="text-4xl font-bold text-center mb-12">Request A <span class="text-gray-900">Call Back</span></h2>
+                <div class="bg-brown text-white pt-16 relative">
+                    <div class="absolute inset-0 -top-10 h-full">
+                        <img src="images/helper4.jpg" alt="Background" class="w-full object-cover"/>
+                    </div>
+                    <div class="container mx-auto px-4 relative">
+                        <h2 class="text-4xl font-bold text-center mb-12">Request A <span class="text-white">Call Back</span></h2>
 
                         <div class="grid md:grid-cols-2 gap-12 items-center">
                             <div>
                                 <form class="space-y-6">
                                     <div>
                                         <input type="text" name="Name" placeholder="Name"
-                                            class="w-full px-4 py-3 bg-gray-800 bg-opacity-10 rounded-lg text-gray-900 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-brown"/>
+                                            class="w-full px-4 py-3 bg-white bg-opacity-10 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-brown"/>
                                     </div>
                                     <div>
                                         <input type="email" name="Email" placeholder="Email"
-                                            class="w-full px-4 py-3 bg-gray-800 bg-opacity-10 rounded-lg text-gray-900 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-brown"/>
+                                            class="w-full px-4 py-3 bg-white bg-opacity-10 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-brown"/>
                                     </div>
                                     <div>
                                         <input type="tel" name="Phone" placeholder="Phone"
-                                            class="w-full px-4 py-3 bg-gray-800 bg-opacity-10 rounded-lg text-gray-900 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-brown"/>
+                                            class="w-full px-4 py-3 bg-white bg-opacity-10 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-brown"/>
                                     </div>
                                     <div>
                                         <textarea name="Message" placeholder="Message" rows="4"
-                                            class="w-full px-4 py-3 bg-gray-800 bg-opacity-10 rounded-lg text-gray-900 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-brown"></textarea>
+                                            class="w-full px-4 py-3 bg-white bg-opacity-10 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-brown"></textarea>
                                     </div>
                                     <div>
                                         <button type="submit"
-                                            class="w-full px-6 py-3 bg-brown text-white rounded-lg hover:bg-brown transition-colors">
+                                            class="w-full px-6 py-3 bg-green-700 text-white rounded-lg hover:bg-green-900 transition-colors">
                                             Send
                                         </button>
                                     </div>
@@ -319,11 +328,18 @@
                                 <img src="images/img.jpg" alt="Contact" class="rounded-lg shadow-lg w-full"/>
                             </div>
                         </div>
+                    </div>
+                </div>
 
+                <div class="bg-brown text-white relative overflow-hidden">
+                    <div class="absolute inset-0 -top-10 h-full">
+                        <img src="images/helper5.jpg" alt="Background" class="w-full"/>
+                    </div>
+                    <div class="container mx-auto px-4 relative">
                         <!-- Footer Logo -->
                         <div class="mt-16 text-center">
                             <a href="index.html">
-                                <img src="images/logo1.jpg" alt="logo" class="mx-auto mb-8"/>
+                                <img src="images/logo.png" alt="logo" class="mx-auto h-20 mb-8"/>
                             </a>
 
                             <!-- Navigation Links -->
@@ -336,13 +352,13 @@
                             </ul>
 
                             <!-- Newsletter -->
-                            <div class="max-w-md mx-auto">
+                            <div class="max-w-md mx-auto relative">
                                 <h3 class="text-2xl font-bold mb-4">Newsletter</h3>
                                 <form class="flex space-x-4">
                                     <input type="email" placeholder="Your email"
-                                        class="flex-1 px-4 py-2 bg-gray-800 bg-opacity-10 rounded-lg text-gray-900 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+                                        class="flex-1 px-4 py-2 bg-white bg-opacity-10 rounded-lg text-white placeholder-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500"/>
                                     <button type="submit"
-                                        class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                                        class="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
                                         Subscribe
                                     </button>
                                 </form>
@@ -351,9 +367,9 @@
                     </div>
 
                     <!-- Copyright -->
-                    <div class="mt-16 py-4 border-t border-gray-300">
-                        <div class="container mx-auto px-4 text-center text-gray-600">
-                            <p>© 2019 All Rights Reserved. Design by <a href="https://html.design/" class="text-blue-600 hover:text-blue-500">Free Html Templates</a></p>
+                    <div class="mt-16 py-4 border-t border-gray-300 relative">
+                        <div class="container mx-auto px-4 text-center text-white">
+                            <p>© 2019 All Rights Reserved.</p>
                         </div>
                     </div>
                 </div>

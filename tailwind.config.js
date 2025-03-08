@@ -15,9 +15,13 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                motter: ['Motter Corpus', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                brown: '#a52a2a',
+                // brown: '#a52a2a',
+                brown: 'rgb(246 92 61)',
+                accent: 'rgb(246 92 61)',
+                background: 'rgb(101 9 89)',
             },
         },
     },
