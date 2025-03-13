@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('plate_categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('category_id')->nullable()->constrained('plate_categories')->nullOnDelete();
             $table->string('name');
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->boolean('is_active')->default(true);
             $table->double('price')->default(0);
             $table->json('images')->default(new Expression('(JSON_ARRAY())'));
@@ -32,7 +32,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('plate_ingredient', function (Blueprint $table) {
+        Schema::create('ingredient_plate', function (Blueprint $table) {
             $table->id();
             $table->foreignId('plate_id')->constrained('plates')->cascadeOnDelete();
             $table->foreignId('ingredient_id')->constrained('ingredients')->cascadeOnDelete();

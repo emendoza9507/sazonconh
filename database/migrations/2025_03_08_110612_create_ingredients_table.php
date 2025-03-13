@@ -15,14 +15,14 @@ return new class extends Migration
         Schema::create('ingredients', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->boolean('is_active')->default(true);
             $table->double('price')->default(0);
             $table->timestamps();
         });
 
-        Schema::create('nutritional_info', function (Blueprint $table) {
+        Schema::create('nutritional_infos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('ingredient_id')->unique()->constrained('ingredients')->cascadeOnDelete();
             $table->integer('calories')->default(0);

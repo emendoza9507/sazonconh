@@ -7,16 +7,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Plate extends Model
 {
-    //
+    use HasFactory;
 
     protected $fillable = [
         'name',
         'category_id',
         'description',
-        'image',
         'is_active',
         'price',
         'images',

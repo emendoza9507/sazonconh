@@ -15,7 +15,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->string('address');
-            $table->text('references');
+            $table->string('street_address')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('zip_code')->nullable();
+            $table->string('country')->nullable();
+            $table->text('references')->nullable();
             $table->double('latitude')->nullable();
             $table->double('longitude')->nullable();
             $table->boolean('is_active')->default(true);
