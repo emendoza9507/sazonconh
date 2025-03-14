@@ -20,6 +20,13 @@ return Application::configure(basePath: dirname(__DIR__))
         //
     })
     ->withExceptions(function (Exceptions $exceptions) {
+
+        if (app()->environment('production')) {
+            if($exceptions instanceof InternalErrorException) {
+                return response()->redirectTo('/');
+            }
+        }
+
         $exceptions->respond(function (Response|RedirectResponse $response) use ($exceptions) {
             if ($response->status() == 404) {
                 return response()->redirectTo('/');
