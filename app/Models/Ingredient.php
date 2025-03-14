@@ -21,4 +21,9 @@ class Ingredient extends Model
     {
         return $this->hasOne(NutritionalInfo::class);
     }
+
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', true);
+    }
 }

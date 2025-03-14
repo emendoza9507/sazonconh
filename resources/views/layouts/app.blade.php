@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" href="{{asset('favicon.png')}}" type="image/x-icon">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -28,7 +29,7 @@
     <!-- loader -->
     <div class="fixed inset-0 bg-background z-50" id="loader_bg">
         <div class="flex items-center justify-center h-screen">
-            <img src="images/loading.gif" alt="Loading..." class="w-16 h-16" />
+            <img src="{{asset('images/logo2.png')}}" alt="Loading..." class="w-16 h-16" />
         </div>
     </div>
 
@@ -45,22 +46,32 @@
             <nav class="mt-5">
                 <ul class="space-y-2 px-4">
                     <li>
-                        <a href="index.html" class="block py-2 px-4 text-gray-800 hover:bg-gray-100 rounded-lg">Home</a>
+                        <a href="{{ route('welcome') }}" class="block py-2 px-4 text-gray-800 hover:bg-gray-100 rounded-lg">
+                            {{ __('Home') }}
+                        </a>
                     </li>
                     <li>
-                        <a href="about.html"
-                            class="block py-2 px-4 text-gray-800 hover:bg-gray-100 rounded-lg">About</a>
+                        <a href="{{ route('about') }}"
+                            class="block py-2 px-4 text-gray-800 hover:bg-gray-100 rounded-lg">
+                            {{ __('About us') }}
+                        </a>
                     </li>
                     <li>
-                        <a href="recipe.html"
-                            class="block py-2 px-4 text-gray-800 hover:bg-gray-100 rounded-lg">Recipe</a>
+                        <a href="{{ route('menu') }}"
+                            class="block py-2 px-4 text-gray-800 hover:bg-gray-100 rounded-lg">
+                            {{ __('Menus') }}
+                        </a>
                     </li>
                     <li>
-                        <a href="blog.html" class="block py-2 px-4 text-gray-800 hover:bg-gray-100 rounded-lg">Blog</a>
+                        <a href="{{ route('blog') }}" class="block py-2 px-4 text-gray-800 hover:bg-gray-100 rounded-lg">
+                            {{ __('Blog') }}
+                        </a>
                     </li>
                     <li>
-                        <a href="contact.html"
-                            class="block py-2 px-4 text-gray-800 hover:bg-gray-100 rounded-lg">Contact Us</a>
+                        <a href="{{ route('contact') }}"
+                            class="block py-2 px-4 text-gray-800 hover:bg-gray-100 rounded-lg">
+                            {{ __('Contact Us') }}
+                        </a>
                     </li>
                 </ul>
             </nav>
@@ -73,24 +84,24 @@
                     <div class="flex items-center justify-between h-full">
                         <div class="w-1/4 h-full">
                             <a href="{{ route('welcome') }}" class="block h-full">
-                                <img src="images/logo2.png" alt="Logo" class="h-full bg-white" />
+                                <img src="{{asset('images/logo2.png')}}" alt="Logo" class="h-full bg-white" />
                             </a>
                         </div>
                         <div class="w-3/4">
                             <div class="flex items-center justify-end space-x-6">
                                 <div class="hidden lg:flex items-center space-x-4">
                                     <div class="flex items-center">
-                                        <img src="images/phone_icon.png" alt="phone" class="w-4 h-4 mr-2" />
+                                        <img src="{{asset('images/phone_icon.png')}}" alt="phone" class="w-4 h-4 mr-2" />
                                         <a href="tel:+14072575463" class="text-white hover:text-gray-800">+1 (407)
                                             257-5463</a>
                                     </div>
                                     <div class="flex items-center">
-                                        <img src="images/mail_icon.png" alt="email" class="w-4 h-4 mr-2" />
+                                        <img src="{{asset('images/mail_icon.png')}}" alt="email" class="w-4 h-4 mr-2" />
                                         <a href="mailto:menu@sahzonconh.com"
                                             class="text-white hover:text-gray-800">menu@sahzonconh.com</a>
                                     </div>
                                     <div class="flex items-center">
-                                        <img src="images/location_icon.png" alt="location" class="w-4 h-4 mr-2" />
+                                        <img src="{{asset('images/location_icon.png')}}" alt="location" class="w-4 h-4 mr-2" />
                                         <a href="https://www.google.com/maps/place/The+Green+House/@28.450656,-81.349815,15z/data=!4m2!3m1!1s0x88dd84835d232003:0x99dabb6f181cec03"
                                             class="text-white hover:text-gray-800">104 New york, USA</a>
                                     </div>
@@ -102,10 +113,10 @@
                                         class="px-6 py-2.5 bg-white text-green-600 text-sm font-medium rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 border border-transparent hover:border-indigo-100">Register</a>
                                 </div>
                                 <button class="p-2">
-                                    <img src="images/search_icon.png" alt="search" class="w-5 h-5" />
+                                    <img src="{{asset('images/search_icon.png')}}" alt="search" class="w-5 h-5" />
                                 </button>
                                 <button id="sidebarCollapse" class="p-2 lg:hidden">
-                                    <img src="images/menu_icon.png" alt="menu" class="w-6 h-6" />
+                                    <img src="{{asset('images/menu_icon.png')}}" alt="menu" class="w-6 h-6" />
                                 </button>
                             </div>
                         </div>
@@ -123,41 +134,42 @@
                 <!-- Contact Form -->
                 <div class="bg-brown text-white pt-16 relative">
                     <div class="absolute inset-0 -top-10 h-full">
-                        <img src="images/helper4.jpg" alt="Background" class="w-full object-cover" />
+                        <img src="{{asset('images/helper4.jpg')}}" alt="Background" class="w-full object-cover" />
                     </div>
                     <div class="container mx-auto px-4 relative">
-                        <h2 class="text-4xl font-bold text-center mb-12">Request A <span class="text-white">Call
-                                Back</span></h2>
+                        <h2 class="text-4xl font-bold text-center mb-12">
+                            {{ __('Request A Call Back') }}
+                        </h2>
 
                         <div class="grid md:grid-cols-2 gap-12 items-center">
                             <div>
                                 <form class="space-y-6">
                                     <div>
-                                        <input type="text" name="Name" placeholder="Name"
+                                        <input type="text" name="Name" placeholder="{{ __('Name') }}"
                                             class="w-full px-4 py-3 bg-white bg-opacity-10 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-brown" />
                                     </div>
                                     <div>
-                                        <input type="email" name="Email" placeholder="Email"
+                                        <input type="email" name="Email" placeholder="{{ __('Email') }}"
                                             class="w-full px-4 py-3 bg-white bg-opacity-10 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-brown" />
                                     </div>
                                     <div>
-                                        <input type="tel" name="Phone" placeholder="Phone"
+                                        <input type="tel" name="Phone" placeholder="{{ __('Phone') }}"
                                             class="w-full px-4 py-3 bg-white bg-opacity-10 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-brown" />
                                     </div>
                                     <div>
-                                        <textarea name="Message" placeholder="Message" rows="4"
+                                        <textarea name="Message" placeholder="{{ __('Message') }}" rows="4"
                                             class="w-full px-4 py-3 bg-white bg-opacity-10 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-brown"></textarea>
                                     </div>
                                     <div>
                                         <button type="submit"
                                             class="w-full px-6 py-3 bg-green-700 text-white rounded-lg hover:bg-green-900 transition-colors">
-                                            Send
+                                            {{ __('Send') }}
                                         </button>
                                     </div>
                                 </form>
                             </div>
                             <div>
-                                <img src="images/img.jpg" alt="Contact" class="rounded-lg shadow-lg w-full" />
+                                <img src="{{asset('images/img.jpg')}}" alt="Contact" class="rounded-lg shadow-lg w-full" />
                             </div>
                         </div>
                     </div>
@@ -167,34 +179,33 @@
             <footer class="bg-background">
                 <div class="bg-brown text-white relative overflow-hidden">
                     <div class="absolute inset-0 -top-10 h-full">
-                        <img src="images/helper5.jpg" alt="Background" class="w-full" />
+                        <img src="{{asset('images/helper5.jpg')}}" alt="Background" class="w-full" />
                     </div>
                     <div class="container mx-auto px-4 relative">
                         <!-- Footer Logo -->
                         <div class="mt-16 text-center">
-                            <a href="index.html">
-                                <img src="images/logo.png" alt="logo" class="mx-auto h-20 mb-8" />
+                            <a href="{{route('welcome')}}">
+                                <img src="{{asset('images/logo2.png')}}" alt="logo" class="mx-auto h-20 mb-8" />
                             </a>
 
                             <!-- Navigation Links -->
                             <ul class="flex justify-center space-x-8 mb-12">
-                                <li><a href="index.html" class="text-gray-900 hover:text-blue-600">Home</a></li>
-                                <li><a href="about.html" class="text-gray-900 hover:text-blue-600">About</a></li>
-                                <li><a href="recipe.html" class="text-gray-900 hover:text-blue-600">Recipe</a></li>
-                                <li><a href="blog.html" class="text-gray-900 hover:text-blue-600">Blog</a></li>
-                                <li><a href="contact.html" class="text-gray-900 hover:text-blue-600">Contact us</a>
-                                </li>
+                                <li><a href="{{ route('welcome') }}" class="text-white text-xl uppercase hover:text-green-600">{{ __('Home') }}</a></li>
+                                <li><a href="{{ route('about') }}" class="text-white text-xl uppercase hover:text-green-600">{{ __('About us') }}</a></li>
+                                <li><a href="{{ route('menu') }}" class="text-white text-xl uppercase hover:text-green-600">{{ __('Menus') }}</a></li>
+                                <li><a href="{{ route('blog') }}" class="text-white text-xl uppercase hover:text-green-600">{{ __('Blog') }}</a></li>
+                                <li><a href="{{ route('contact') }}" class="text-white text-xl uppercase hover:text-green-600">{{ __('Contact Us') }}</a></li>
                             </ul>
 
                             <!-- Newsletter -->
                             <div class="max-w-md mx-auto relative">
-                                <h3 class="text-2xl font-bold mb-4">Newsletter</h3>
+                                <h3 class="text-2xl font-bold mb-4">{{ __('Newsletter') }}</h3>
                                 <form class="flex space-x-4">
                                     <input type="email" placeholder="Your email"
                                         class="flex-1 px-4 py-2 bg-white bg-opacity-10 rounded-lg text-white placeholder-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500" />
                                     <button type="submit"
                                         class="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
-                                        Subscribe
+                                        {{__('Subscribe')}}
                                     </button>
                                 </form>
                             </div>
@@ -204,7 +215,7 @@
                     <!-- Copyright -->
                     <div class="mt-16 py-4 border-t border-gray-300 relative">
                         <div class="container mx-auto px-4 text-center text-white">
-                            <p>© 2019 All Rights Reserved.</p>
+                            <p>© 2019 {{__('All Rights Reserved')}}.</p>
                         </div>
                     </div>
                 </div>
@@ -325,12 +336,17 @@
         // Initialize carousels when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize main slider
-            const mainSlider = new Carousel(document.getElementById('main_slider'));
+            const $mainSlider = document.getElementById('main_slider');
+            const $recipeCarusel = document.querySelector('.owl-carousel');
+
+            if($mainSlider !== null) {
+                const mainSlider = new Carousel($mainSlider);
+            }
 
             // Initialize recipe carousel
-            const recipeCarousel = new RecipeCarousel(
-                document.querySelector('.owl-carousel')
-            );
+            if($recipeCarusel) {
+                const recipeCarousel = new RecipeCarousel($recipeCarusel);
+            }
 
             // Loader functionality
             const loader = document.getElementById('loader_bg');

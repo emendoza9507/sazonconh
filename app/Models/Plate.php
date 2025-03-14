@@ -29,7 +29,7 @@ class Plate extends Model
 
     public function category(): BelongsTo
     {
-        return $this->belongsTo(PlateCategory::class);
+        return $this->belongsTo(PlateCategory::class, 'category_id');
     }
 
     public function ingredients(): BelongsToMany

@@ -2,18 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\MenuService;
+use App\Services\PostService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class DefaultController extends Controller
 {
-    public function index()
+    public function index(MenuService $menuService, PostService $postService)
     {
-        return view('index');
+        $lastMenus = $menuService->getLastMenus();
+
+        $lastPosts = $postService->getLastPosts();
+
+        return view('index', [
+            'lastMenus' => $lastMenus,
+            'lastPosts' => $lastPosts
+        ]);
     }
 
-    public function about()
+    public function about(MenuService $menuService)
     {
-        return view('about');
+        $lastMenus = $menuService->getLastMenus();
+        return view('about', [
+            'lastMenus' => $lastMenus
+        ]);
     }
 
     public function contact() {
@@ -24,7 +37,11 @@ class DefaultController extends Controller
         return view('menu');
     }
 
-    public function blog() {
-        return view('blog');
+    public function blog(PostService $postService) {
+        $lastPosts = $postService->getPublishedPosts();
+
+        return view('blog', [
+            'lastPosts' => $lastPosts->simplePaginate(9)
+        ]);
     }
 }

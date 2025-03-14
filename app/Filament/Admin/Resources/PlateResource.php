@@ -4,8 +4,13 @@ namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\PlateResource\Pages;
 use App\Filament\Admin\Resources\PlateResource\RelationManagers;
+use App\Models\Ingredient;
 use App\Models\Plate;
 use Filament\Forms;
+use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Tabs;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -23,51 +28,65 @@ class PlateResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255)
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('description')
-                    ->maxLength(255)
-                    ->default(null)
-                    ->columnSpanFull(),
-                Forms\Components\Select::make('category_id')
-                    ->relationship('category', 'name')
-                    ->createOptionForm(function ($livewire) {
-                        return [
-                            Forms\Components\TextInput::make('name')
-                                ->required()
-                                ->maxLength(255),
-                            Forms\Components\TextInput::make('description')
-                                ->maxLength(255)
-                                ->default(null),
-                            Forms\Components\Toggle::make('is_active')
-                                ->default(true)
-                                ->required(),
-                        ];
-                    })
-                    ->default(null),
-                Forms\Components\TextInput::make('price')
-                    ->required()
-                    ->numeric()
-                    ->default(0)
-                    ->prefix('$'),
-                Forms\Components\Toggle::make('is_active')
-                    ->required(),
-                Forms\Components\Section::make('Images')
-                    ->collapsed(true)
+                Tabs::make()
+                    ->columnSpanFull()
                     ->schema([
-                        Forms\Components\FileUpload::make('cover_image')
-                            ->image()
-                            ->disk('public')
-                            ->directory('plates')
-                            ->columnSpanFull(),
-                        Forms\Components\FileUpload::make('images')
-                            ->image()
-                            ->disk('public')
-                            ->directory('plates')
-                            ->multiple()
-                            ->columnSpanFull(),
+                        Tabs\Tab::make('Data')
+                            ->schema([
+                                Forms\Components\TextInput::make('name')
+                                    ->required()
+                                    ->maxLength(255)
+                                    ->columnSpanFull(),
+                                Forms\Components\TextInput::make('description')
+                                    ->maxLength(255)
+                                    ->default(null)
+                                    ->columnSpanFull(),
+                                Forms\Components\Select::make('category_id')
+                                    ->relationship('category', 'name')
+                                    ->createOptionForm(function ($livewire) {
+                                        return [
+                                            Forms\Components\TextInput::make('name')
+                                                ->required()
+                                                ->maxLength(255),
+                                            Forms\Components\TextInput::make('description')
+                                                ->maxLength(255)
+                                                ->default(null),
+                                            Forms\Components\Toggle::make('is_active')
+                                                ->default(true)
+                                                ->required(),
+                                        ];
+                                    })
+                                    ->default(null),
+                                Forms\Components\TextInput::make('price')
+                                    ->required()
+                                    ->numeric()
+                                    ->default(0)
+                                    ->prefix('$'),
+                                Forms\Components\Toggle::make('is_active')
+                                    ->required(),
+                                Forms\Components\Section::make('Images')
+                                    ->collapsed(true)
+                                    ->schema([
+                                        Forms\Components\FileUpload::make('cover_image')
+                                            ->image()
+                                            ->disk('public')
+                                            ->directory('plates')
+                                            ->columnSpanFull(),
+                                        Forms\Components\FileUpload::make('images')
+                                            ->image()
+                                            ->disk('public')
+                                            ->directory('plates')
+                                            ->multiple()
+                                            ->columnSpanFull(),
+                                    ]),
+                            ]),
+                        Tabs\Tab::make('Ingredients')
+                            ->schema([
+                                Forms\Components\Repeater::make('Ingredient')
+                                    ->schema([
+
+                                    ])
+                            ])
                     ]),
             ]);
     }
@@ -76,6 +95,8 @@ class PlateResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('cover_image')
+                    ->label('Image'),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('category.name')
@@ -89,7 +110,8 @@ class PlateResource extends Resource
                 Tables\Columns\TextColumn::make('price')
                     ->money()
                     ->sortable(),
-                Tables\Columns\ImageColumn::make('cover_image'),
+                Tables\Columns\TextColumn::make('menus.name')
+                    ->badge(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
