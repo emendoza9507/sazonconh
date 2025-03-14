@@ -20,16 +20,16 @@ return Application::configure(basePath: dirname(__DIR__))
         //
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        $exceptions->respond(function (Response|RedirectResponse $response) use ($exceptions) {
-            if ($exceptions instanceof NotFoundHttpException) {
-                return response()->redirectTo('/');
-            }
+        // $exceptions->respond(function (Response|RedirectResponse $response) use ($exceptions) {
+        //     if ($exceptions instanceof NotFoundHttpException) {
+        //         return response()->redirectTo('/');
+        //     }
 
-            if ($exceptions instanceof InternalErrorException) {
-                Log::error($exceptions->getMessage());
-                return throw $exceptions;
-            }
+        //     if ($exceptions instanceof InternalErrorException) {
+        //         Log::error($exceptions->getMessage());
+        //         return throw $exceptions;
+        //     }
 
-            return response()->redirectTo('/');
-        });
+        //     return response()->redirectTo('/');
+        // });
     })->create();
