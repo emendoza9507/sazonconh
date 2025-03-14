@@ -27,7 +27,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
             if ($response->status() == 500) {
                 Log::error($response->getMessage());
-                return throw $response;
+                return response()->redirectTo('/');
             }
 
             return $response;
