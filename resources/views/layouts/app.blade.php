@@ -4,38 +4,45 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="view-transition" content="same-origin">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" href="{{asset('favicon.png')}}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('favicon.png') }}" type="image/x-icon">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
     <!-- awesome fontfamily -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/css/carousel.css', 'resources/js/app.js'])
 
     <!-- Styles -->
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased ">
+    <div class="h-[100vh] w-full fixed top-0 inset-0 bg-gradient-to-b from-background to-brown">
+
+    </div>
     <x-banner />
 
     <!-- loader -->
-    <div class="fixed inset-0 bg-background z-50" id="loader_bg">
-        <div class="flex items-center justify-center h-screen">
-            <img src="{{asset('images/logo2.png')}}" alt="Loading..." class="w-16 h-16" />
+    @if(request()->is('welcome'))
+        <div class="fixed inset-0 bg-background z-50" id="loader_bg">
+            <div class="flex items-center justify-center h-screen">
+                <img id="loader_logo" src="{{ asset('images/logo2.png') }}" alt="Loading..." class="w-16 h-16 animate-ping" />
+            </div>
         </div>
-    </div>
+    @endif
 
     <div class="relative">
         <!-- sidebar -->
-        <div class="fixed inset-y-0 left-0 z-40 w-64 bg-white transform -translate-x-full transition-transform duration-300 ease-in-out"
+        <div class="fixed inset-y-0 left-0 z-[101] w-64 bg-white transform -translate-x-full transition-transform duration-300 ease-in-out"
             id="sidebar">
             <div class="p-4">
                 <button id="dismiss" class="float-right text-gray-600 hover:text-gray-800">
@@ -46,7 +53,8 @@
             <nav class="mt-5">
                 <ul class="space-y-2 px-4">
                     <li>
-                        <a href="{{ route('welcome') }}" class="block py-2 px-4 text-gray-800 hover:bg-gray-100 rounded-lg">
+                        <a href="{{ route('welcome') }}"
+                            class="block py-2 px-4 text-gray-800 hover:bg-gray-100 rounded-lg">
                             {{ __('Home') }}
                         </a>
                     </li>
@@ -63,7 +71,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('blog') }}" class="block py-2 px-4 text-gray-800 hover:bg-gray-100 rounded-lg">
+                        <a href="{{ route('blog') }}"
+                            class="block py-2 px-4 text-gray-800 hover:bg-gray-100 rounded-lg">
                             {{ __('Blog') }}
                         </a>
                     </li>
@@ -79,29 +88,32 @@
 
         <div class="relative">
             <!-- header -->
-            <header class="bg-brown shadow-md h-20">
+            <header class="sticky bottom-0 top-0 z-[100] bg-brown shadow-md h-20">
                 <div class="container mx-auto px-4 h-full">
                     <div class="flex items-center justify-between h-full">
-                        <div class="w-1/4 h-full">
-                            <a href="{{ route('welcome') }}" class="block h-full">
-                                <img src="{{asset('images/logo2.png')}}" alt="Logo" class="h-full bg-white" />
+                        <div class="h-full">
+                            <a id="nav_logo_container" href="{{ route('welcome') }}" class="block w-20 h-full">
+                                <img id="nav_logo" src="{{ asset('images/logo2.png') }}" alt="Logo" class="h-full " />
                             </a>
                         </div>
-                        <div class="w-3/4">
+                        <div class="w-full">
                             <div class="flex items-center justify-end space-x-6">
                                 <div class="hidden lg:flex items-center space-x-4">
                                     <div class="flex items-center">
-                                        <img src="{{asset('images/phone_icon.png')}}" alt="phone" class="w-4 h-4 mr-2" />
+                                        <img src="{{ asset('images/phone_icon.png') }}" alt="phone"
+                                            class="w-4 h-4 mr-2" />
                                         <a href="tel:+14072575463" class="text-white hover:text-gray-800">+1 (407)
                                             257-5463</a>
                                     </div>
                                     <div class="flex items-center">
-                                        <img src="{{asset('images/mail_icon.png')}}" alt="email" class="w-4 h-4 mr-2" />
+                                        <img src="{{ asset('images/mail_icon.png') }}" alt="email"
+                                            class="w-4 h-4 mr-2" />
                                         <a href="mailto:menu@sahzonconh.com"
                                             class="text-white hover:text-gray-800">menu@sahzonconh.com</a>
                                     </div>
                                     <div class="flex items-center">
-                                        <img src="{{asset('images/location_icon.png')}}" alt="location" class="w-4 h-4 mr-2" />
+                                        <img src="{{ asset('images/location_icon.png') }}" alt="location"
+                                            class="w-4 h-4 mr-2" />
                                         <a href="https://www.google.com/maps/place/The+Green+House/@28.450656,-81.349815,15z/data=!4m2!3m1!1s0x88dd84835d232003:0x99dabb6f181cec03"
                                             class="text-white hover:text-gray-800">104 New york, USA</a>
                                     </div>
@@ -112,11 +124,18 @@
                                     <a href="#"
                                         class="px-6 py-2.5 bg-white text-green-600 text-sm font-medium rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 border border-transparent hover:border-indigo-100">Register</a>
                                 </div>
-                                <button class="p-2">
-                                    <img src="{{asset('images/search_icon.png')}}" alt="search" class="w-5 h-5" />
-                                </button>
+                                {{-- <button class="p-2">
+                                    <img src="{{ asset('images/search_icon.png') }}" alt="search" class="w-5 h-5" />
+                                </button> --}}
+                                {{-- <button id="cart-icon" class="relative bg-white p-3 rounded-full shadow-lg z-50 cursor-pointer hover:bg-gray-100 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                    </svg>
+                                    <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center hidden">0</span>
+                                </button> --}}
+                                @livewire('cart')
                                 <button id="sidebarCollapse" class="p-2 lg:hidden">
-                                    <img src="{{asset('images/menu_icon.png')}}" alt="menu" class="w-6 h-6" />
+                                    <img src="{{ asset('images/menu_icon.png') }}" alt="menu" class="w-6 h-6" />
                                 </button>
                             </div>
                         </div>
@@ -128,95 +147,98 @@
                 {{ $slot }}
             </main>
 
+            <!-- Contact Form -->
+            <section class="text-white pt-16 relative">
+                <div class="container mx-auto px-4 relative">
+                    <h2 class="text-4xl font-bold font-motter text-center mb-12 uppercase">
+                        {{ __('Request A Call Back') }}
+                    </h2>
 
-
-            <section class="bg-background">
-                <!-- Contact Form -->
-                <div class="bg-brown text-white pt-16 relative">
-                    <div class="absolute inset-0 -top-10 h-full">
-                        <img src="{{asset('images/helper4.jpg')}}" alt="Background" class="w-full object-cover" />
-                    </div>
-                    <div class="container mx-auto px-4 relative">
-                        <h2 class="text-4xl font-bold text-center mb-12">
-                            {{ __('Request A Call Back') }}
-                        </h2>
-
-                        <div class="grid md:grid-cols-2 gap-12 items-center">
-                            <div>
-                                <form class="space-y-6">
-                                    <div>
-                                        <input type="text" name="Name" placeholder="{{ __('Name') }}"
-                                            class="w-full px-4 py-3 bg-white bg-opacity-10 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-brown" />
-                                    </div>
-                                    <div>
-                                        <input type="email" name="Email" placeholder="{{ __('Email') }}"
-                                            class="w-full px-4 py-3 bg-white bg-opacity-10 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-brown" />
-                                    </div>
-                                    <div>
-                                        <input type="tel" name="Phone" placeholder="{{ __('Phone') }}"
-                                            class="w-full px-4 py-3 bg-white bg-opacity-10 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-brown" />
-                                    </div>
-                                    <div>
-                                        <textarea name="Message" placeholder="{{ __('Message') }}" rows="4"
-                                            class="w-full px-4 py-3 bg-white bg-opacity-10 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-brown"></textarea>
-                                    </div>
-                                    <div>
-                                        <button type="submit"
-                                            class="w-full px-6 py-3 bg-green-700 text-white rounded-lg hover:bg-green-900 transition-colors">
-                                            {{ __('Send') }}
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                            <div>
-                                <img src="{{asset('images/img.jpg')}}" alt="Contact" class="rounded-lg shadow-lg w-full" />
-                            </div>
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <form class="space-y-6">
+                                <div>
+                                    <input type="text" name="Name" placeholder="{{ __('Name') }}"
+                                        class="w-full px-4 py-3 bg-white bg-opacity-10 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-brown" />
+                                </div>
+                                <div>
+                                    <input type="email" name="Email" placeholder="{{ __('Email') }}"
+                                        class="w-full px-4 py-3 bg-white bg-opacity-10 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-brown" />
+                                </div>
+                                <div>
+                                    <input type="tel" name="Phone" placeholder="{{ __('Phone') }}"
+                                        class="w-full px-4 py-3 bg-white bg-opacity-10 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-brown" />
+                                </div>
+                                <div>
+                                    <textarea name="Message" placeholder="{{ __('Message') }}" rows="4"
+                                        class="w-full px-4 py-3 bg-white bg-opacity-10 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-brown"></textarea>
+                                </div>
+                                <div>
+                                    <button type="submit"
+                                        class="w-full px-6 py-3 bg-green-700 text-white rounded-lg hover:bg-green-900 transition-colors">
+                                        {{ __('Send') }}
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div>
+                            <img src="{{ asset('images/img.jpg') }}" alt="Contact"
+                                class="rounded-lg shadow-lg w-full" />
                         </div>
                     </div>
                 </div>
             </section>
 
-            <footer class="bg-background">
-                <div class="bg-brown text-white relative overflow-hidden">
-                    <div class="absolute inset-0 -top-10 h-full">
-                        <img src="{{asset('images/helper5.jpg')}}" alt="Background" class="w-full" />
-                    </div>
-                    <div class="container mx-auto px-4 relative">
-                        <!-- Footer Logo -->
-                        <div class="mt-16 text-center">
-                            <a href="{{route('welcome')}}">
-                                <img src="{{asset('images/logo2.png')}}" alt="logo" class="mx-auto h-20 mb-8" />
-                            </a>
+            <footer class=" text-white relative overflow-hidden">
+                {{-- <div class="absolute inset-0 -top-10 h-full">
+                    <img src="{{ asset('images/helper5.jpg') }}" alt="Background" class="w-full" />
+                </div> --}}
+                <div class="container mx-auto px-4 relative">
+                    <!-- Footer Logo -->
+                    <div class="mt-16 text-center">
+                        <a href="{{ route('welcome') }}">
+                            <img src="{{ asset('images/logo2.png') }}" alt="logo" class="mx-auto h-20 mb-8" />
+                        </a>
 
-                            <!-- Navigation Links -->
-                            <ul class="flex justify-center space-x-8 mb-12">
-                                <li><a href="{{ route('welcome') }}" class="text-white text-xl uppercase hover:text-green-600">{{ __('Home') }}</a></li>
-                                <li><a href="{{ route('about') }}" class="text-white text-xl uppercase hover:text-green-600">{{ __('About us') }}</a></li>
-                                <li><a href="{{ route('menu') }}" class="text-white text-xl uppercase hover:text-green-600">{{ __('Menus') }}</a></li>
-                                <li><a href="{{ route('blog') }}" class="text-white text-xl uppercase hover:text-green-600">{{ __('Blog') }}</a></li>
-                                <li><a href="{{ route('contact') }}" class="text-white text-xl uppercase hover:text-green-600">{{ __('Contact Us') }}</a></li>
-                            </ul>
+                        <!-- Navigation Links -->
+                        <ul
+                            class="flex md:flex-row flex-col justify-center justify-items-center items-center md:space-x-8 mb-12">
+                            <li><a href="{{ route('welcome') }}"
+                                    class="text-white text-xl uppercase hover:text-green-600">{{ __('Home') }}</a>
+                            </li>
+                            <li><a href="{{ route('about') }}"
+                                    class="text-white text-xl uppercase hover:text-green-600">{{ __('About us') }}</a>
+                            </li>
+                            <li><a href="{{ route('menu') }}"
+                                    class="text-white text-xl uppercase hover:text-green-600">{{ __('Menus') }}</a>
+                            </li>
+                            <li><a href="{{ route('blog') }}"
+                                    class="text-white text-xl uppercase hover:text-green-600">{{ __('Blog') }}</a>
+                            </li>
+                            <li><a href="{{ route('contact') }}"
+                                    class="text-white text-xl uppercase hover:text-green-600">{{ __('Contact Us') }}</a>
+                            </li>
+                        </ul>
 
-                            <!-- Newsletter -->
-                            <div class="max-w-md mx-auto relative">
-                                <h3 class="text-2xl font-bold mb-4">{{ __('Newsletter') }}</h3>
-                                <form class="flex space-x-4">
-                                    <input type="email" placeholder="Your email"
-                                        class="flex-1 px-4 py-2 bg-white bg-opacity-10 rounded-lg text-white placeholder-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500" />
-                                    <button type="submit"
-                                        class="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
-                                        {{__('Subscribe')}}
-                                    </button>
-                                </form>
-                            </div>
+                        <!-- Newsletter -->
+                        <div class="max-w-md mx-auto relative">
+                            <h3 class="text-2xl font-bold mb-4">{{ __('Newsletter') }}</h3>
+                            <form class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                                <input type="email" placeholder="Your email"
+                                    class="flex-1 px-4 py-2 bg-white bg-opacity-10 rounded-lg text-white placeholder-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500" />
+                                <button type="submit"
+                                    class="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
+                                    {{ __('Subscribe') }}
+                                </button>
+                            </form>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Copyright -->
-                    <div class="mt-16 py-4 border-t border-gray-300 relative">
-                        <div class="container mx-auto px-4 text-center text-white">
-                            <p>© 2019 {{__('All Rights Reserved')}}.</p>
-                        </div>
+                <!-- Copyright -->
+                <div class="mt-16 py-4 border-t border-gray-300 relative">
+                    <div class="container mx-auto px-4 text-center text-white">
+                        <p>© 2019 {{ __('All Rights Reserved') }}.</p>
                     </div>
                 </div>
             </footer>
@@ -228,135 +250,10 @@
 
     @stack('modals')
 
+
     @livewireScripts
 
-    <!-- Scripts -->
-    <script>
-        // Sidebar functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('overlay');
-            const dismissButton = document.getElementById('dismiss');
-            const sidebarCollapse = document.getElementById('sidebarCollapse');
-
-            function openSidebar() {
-                sidebar.classList.remove('-translate-x-full');
-                overlay.classList.remove('hidden');
-            }
-
-            function closeSidebar() {
-                sidebar.classList.add('-translate-x-full');
-                overlay.classList.add('hidden');
-            }
-
-            sidebarCollapse.addEventListener('click', openSidebar);
-            dismissButton.addEventListener('click', closeSidebar);
-            overlay.addEventListener('click', closeSidebar);
-        });
-
-        // Carousel functionality
-        class Carousel {
-            constructor(element) {
-                this.element = element;
-                this.items = Array.from(element.querySelectorAll('.carousel-item'));
-                this.totalItems = this.items.length;
-                this.currentIndex = 0;
-
-                // Set up controls
-                const prevButton = element.querySelector('[data-slide="prev"]');
-                const nextButton = element.querySelector('[data-slide="next"]');
-
-                if (prevButton) prevButton.addEventListener('click', () => this.prev());
-                if (nextButton) nextButton.addEventListener('click', () => this.next());
-
-                // Initial setup
-                this.showItem(0);
-            }
-
-            showItem(index) {
-                this.items.forEach(item => {
-                    item.classList.remove('active');
-                    item.style.display = 'none';
-                });
-
-                this.items[index].classList.add('active');
-                this.items[index].style.display = 'block';
-            }
-
-            next() {
-                this.currentIndex = (this.currentIndex + 1) % this.totalItems;
-                this.showItem(this.currentIndex);
-            }
-
-            prev() {
-                this.currentIndex = (this.currentIndex - 1 + this.totalItems) % this.totalItems;
-                this.showItem(this.currentIndex);
-            }
-        }
-
-        // Recipe carousel functionality
-        class RecipeCarousel {
-            constructor(element) {
-                this.container = element;
-                this.items = Array.from(element.children);
-                this.currentIndex = 0;
-                this.itemsPerView = {
-                    mobile: 1,
-                    tablet: 2,
-                    desktop: 5
-                };
-
-                this.setupResponsive();
-                window.addEventListener('resize', () => this.setupResponsive());
-            }
-
-            setupResponsive() {
-                const width = window.innerWidth;
-                let itemsToShow;
-
-                if (width < 600) {
-                    itemsToShow = this.itemsPerView.mobile;
-                } else if (width < 1000) {
-                    itemsToShow = this.itemsPerView.tablet;
-                } else {
-                    itemsToShow = this.itemsPerView.desktop;
-                }
-
-                this.items.forEach(item => {
-                    item.style.display = 'none';
-                });
-
-                for (let i = 0; i < itemsToShow; i++) {
-                    const index = (this.currentIndex + i) % this.items.length;
-                    this.items[index].style.display = 'block';
-                }
-            }
-        }
-
-        // Initialize carousels when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize main slider
-            const $mainSlider = document.getElementById('main_slider');
-            const $recipeCarusel = document.querySelector('.owl-carousel');
-
-            if($mainSlider !== null) {
-                const mainSlider = new Carousel($mainSlider);
-            }
-
-            // Initialize recipe carousel
-            if($recipeCarusel) {
-                const recipeCarousel = new RecipeCarousel($recipeCarusel);
-            }
-
-            // Loader functionality
-            const loader = document.getElementById('loader_bg');
-            window.addEventListener('load', function() {
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                }, 1000);
-            });
-        });
-    </script>
+    @stack('scripts')
 </body>
 
 </html>

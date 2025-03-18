@@ -29,6 +29,9 @@ class PlatesRelationManager extends RelationManager
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make(),
+                Tables\Actions\AttachAction::make()
+                    ->multiple()
+                    ->preloadRecordSelect()
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

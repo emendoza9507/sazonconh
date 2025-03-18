@@ -15,4 +15,9 @@ class MenuService
     {
         return Menu::bySlug($slug);
     }
+
+    public function getAll()
+    {
+        return Menu::active()->orderBy('updated_at', 'desc');
+    }
 }

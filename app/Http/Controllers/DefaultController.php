@@ -33,8 +33,12 @@ class DefaultController extends Controller
         return view('contact');
     }
 
-    public function menu() {
-        return view('menu');
+    public function menu(MenuService $menuService) {
+        $menus = $menuService->getAll();
+
+        return view('menu', [
+            'menus' => $menus->simplePaginate()
+        ]);
     }
 
     public function blog(PostService $postService) {

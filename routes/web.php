@@ -8,6 +8,8 @@ Route::get('/about', [Controllers\DefaultController::class, 'about'])->name('abo
 Route::get('/contact', [Controllers\DefaultController::class, 'contact'])->name('contact');
 Route::get('/menu', [Controllers\DefaultController::class, 'menu'])->name('menu');
 Route::get('/menu/{slug}', [Controllers\MenuController::class, 'show'])->name('menu.detail');
+Route::get('/plate/{plate}', [Controllers\PlateController::class, 'show'])->name('plate.detail');
+
 Route::get('/blog', [Controllers\DefaultController::class, 'blog'])->name('blog');
 
 

@@ -16,6 +16,9 @@
     /* html {
         font-family: 'Motter Corpus', system-ui, sans-serif;
     } */
+    body {
+        font-family: 'Poppins';
+    }
 
     /* Clases de utilidad para la fuente */
     .font-motter {
@@ -27,3 +30,137 @@
     display: none;
 }
 
+.notification_card {
+    top: 90px;
+    right: 12px;
+    @apply shadow-lg;
+}
+
+* {
+    font-size: 16px;
+}
+
+/* Para vista tablet */
+@media (min-width: 600px) {
+    .blog-item {
+        flex: 0 0 50% !important;
+    }
+}
+
+/* Para vista desktop */
+@media (min-width: 1000px) {
+    .blog-item {
+        flex: 0 0 30% !important;
+    }
+}
+
+@view-transition {
+    navigation: auto;
+}
+
+/* main {
+    view-transition-name: page;
+}
+
+::view-transition-old(page) {
+    animation: fade 0.2s linear forwards;
+}
+
+::view-transition-new(page) {
+    animation: fade 0.3s linear reverse;
+} */
+
+@keyframes fade {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+}
+
+.logo-transition {
+    position: fixed;
+    z-index: 100;
+    transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+#loader_logo {
+    transition: opacity 0.5s ease-out;
+}
+
+#nav_logo {
+    opacity: 1;
+    transition: opacity 0.3s ease-in;
+}
+
+#nav_logo.visible {
+    opacity: 1;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 0.8s;
+}
+
+/* Estilo específico para la imagen del menú */
+::view-transition-old(menu-image),
+::view-transition-new(menu-image) {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Controla la superposición de elementos durante la transición */
+::view-transition-group(menu-image) {
+    animation-duration: 0.7s;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Estilos para la transición */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slide-up {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.menu-transition {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.menu-transition:hover {
+    transform: scale(1.03);
+}
+
+/* Fallback animation para navegadores sin soporte */
+.menu-detail-container {
+    animation: fade-in 0.4s ease-out;
+}
+
+.menu-detail-content {
+    animation: slide-up 0.5s ease-out;
+}
+
+/* Refinamiento de las transiciones */
+@supports (view-transition-name: none) {
+    .menu-detail-container,
+    .menu-detail-content {
+        animation: none;
+    }
+}

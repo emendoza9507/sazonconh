@@ -1,5 +1,5 @@
 <x-app-layout>
-    <section class="bg-background">
+    <section class="h-[100%] bg-gradient-to-t  from-background/60 to-brown/70 ">
         <!-- about -->
         <div class="py-16">
             <div class="container mx-auto px-4">

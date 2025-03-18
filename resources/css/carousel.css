@@ -1,0 +1,128 @@
+/* Estilos base del carrusel */
+.recipe-carousel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.recipe-carousel-container {
+    display: flex;
+    gap: 10px;
+    justify-content: space-evenly;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.carousel-item {
+    flex: 0 0 100%;
+    opacity: 1;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Para vista tablet */
+@media (min-width: 600px) {
+    .carousel-item {
+        flex: 0 0 50%;
+    }
+}
+
+/* Para vista desktop */
+@media (min-width: 1000px) {
+    .carousel-item {
+        flex: 0 0 20%;
+    }
+}
+
+/* Estados de animación */
+.carousel-item.hidden {
+    display: none;
+}
+
+.carousel-item.active {
+    display: block;
+}
+
+/* Animaciones de transición */
+.carousel-item.slide-next-enter {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.carousel-item.slide-next-enter-active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.carousel-item.slide-next-exit {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.carousel-item.slide-next-exit-active {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.carousel-item.slide-prev-enter {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.carousel-item.slide-prev-enter-active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.carousel-item.slide-prev-exit {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.carousel-item.slide-prev-exit-active {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+/* Animaciones de fade */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.carousel-item.fade-in {
+    animation: fadeIn 0.5s forwards;
+}
+
+.carousel-item.fade-out {
+    animation: fadeOut 0.5s forwards;
+}
+
+/* Controles de navegación */
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.carousel-control {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    cursor: pointer;
+    margin: 0 0.5rem;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.carousel-control:hover {
+    background-color: #f8f8f8;
+    transform: scale(1.1);
+}
