@@ -67,18 +67,18 @@
                     <!-- Recipe Item 1 -->
                     @foreach ($lastMenus as $menu)
                         <div
-                            class="group relative min-h-[400px] rounded-lg overflow-hidden border-green-400 hover:border hover:shadow-2xl hover:shadow-green-500">
-                            <div class="h-48 pt-4">
+                            class="group relative min-h-[400px] rounded-lg overflow-hidden border-green-400 border hover:shadow-2xl hover:shadow-green-500">
+                            <div class="h-48">
                                 <img src="{{ Storage::url($menu->cover_image) }}"
                                     alt="{{ $menu->name }}-{{ $menu->description }}"
-                                    class="h-full mx-auto object-cover"
+                                    class="h-full w-full mx-auto object-cover"
                                     style="view-transition-name: menu-image-{{ $menu->id }};" />
                             </div>
                             <div class="relative p-4 overflow-hidden">
                                 <a href="{{ route('menu.detail', $menu->slug) }}" class="btn-action menu-item-link" data-menu-id="{{ $menu->id }}">
                                     <h3 class="text-[20px] font-motter text-green-400 btn-action">{{ $menu->name }}</h3>
                                 </a>
-                                <p class="text-[15px] text-white border-t border-brown transition-all duration-500">
+                                <p class="text-[15px] line-clamp-3 text-white border-t border-brown transition-all duration-500">
                                     {{ $menu->description }}</p>
                                 {{-- <h4 class="mt-2"><span class="text-blue-600">$</span>{{$menu->price}}</h4> --}}
 

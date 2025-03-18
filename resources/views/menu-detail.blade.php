@@ -1,7 +1,7 @@
 <x-app-layout>
     <section class="py-4">
-        <div class="flex justify-center max-h-[300px]">
-            <img class="h-full rounded-lg" src="{{ Storage::url($menu->cover_image) }}" alt="{{ $menu->description }}"
+        <div class="flex justify-center h-[300px]">
+            <img class="h-[300px] w-[300px] rounded-full shadow-[0px_0px_15px_0px_rgba(0,0,0,0.5)] shadow-green-400 object-cover border-2 border-green-400" src="{{ Storage::url($menu->cover_image) }}" alt="{{ $menu->description }}"
                 style="view-transition-name: menu-image-{{ $menu->id }};">
         </div>
         <div class="py-8">

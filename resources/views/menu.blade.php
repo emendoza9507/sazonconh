@@ -17,7 +17,7 @@
                             <div class="h-48 col-span-full md:col-span-3 xl:col-span-4">
                                 <img src="{{ Storage::url($menu->cover_image) }}"
                                     alt="{{ $menu->name }}-{{ $menu->description }}"
-                                    class="h-full mx-auto object-cover"
+                                    class="h-full w-full rounded-2xl mx-auto object-cover"
                                     style="view-transition-name: menu-image-{{ $menu->id }};" />
                             </div>
                             <div class="relative col-span-full md:col-span-6 xl:col-span-8 p-4 overflow-hidden">
